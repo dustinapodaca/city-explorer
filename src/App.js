@@ -10,7 +10,9 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <Main />
+        <div id="mainDiv">
+          <Main />
+        </div>
         <Footer />
       </>
     );
