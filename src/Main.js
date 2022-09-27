@@ -11,6 +11,7 @@ class Main extends React.Component {
       searchQuery: '',
       location: {},
       error: false,
+      displayCard: false,
       errorMessage: '',
       cityMap: '',
     };
@@ -32,14 +33,20 @@ class Main extends React.Component {
       this.setState({ 
         location: response.data[0],
         cityMap: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${response.data[0].lat},${response.data[0].lon}&zoom=12`,
+        displayCard: true,
       });
+      this.setState({ searchQuery: '', });
       
       //if there is an error code runs in the catch block
     } catch (error) {
       // console.log(error)
-      this.setState({ error: true });
+      this.setState({ 
+        error: true,
+        displayCard: false,
+      });
       this.setState({ errorMessage: error.message });
     }
+    e.target.reset();
   }
 
   render() {
@@ -57,6 +64,7 @@ class Main extends React.Component {
           cityMap={this.state.cityMap}
           errorMessage={this.state.errorMessage}
           error={this.state.error}
+          displayCard={this.state.displayCard}
         />
       </>
     );

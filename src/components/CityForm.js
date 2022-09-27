@@ -8,13 +8,15 @@ class CityForm extends React.Component {
   render() {
     return (
       <>
-        <Container>
+        <Container className="mw-75">
           <Form onSubmit={this.props.handleSearch} className="my-3">
             <Form.Group className="mb-3">
               <Form.Control onChange={this.props.handleInput} type="text" placeholder="Enter a city name to see its location on a map:" />
             <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
-            <Button onClick={this.props.handleSearch} variant="primary" type="submit">Explore!</Button>
+            <div className="d-grid gap-2">
+              <Button onClick={this.props.handleSearch} variant="outline-dark" type="submit">Explore!</Button>
+            </div>
           </Form>
         </Container>
       </>
