@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import CityForm from './components/CityForm';
 import CityCard from './components/CityCard';
+import Weather from './components/Weather';
 import './App.css';
 
 class Main extends React.Component {
@@ -14,6 +15,8 @@ class Main extends React.Component {
       displayCard: false,
       errorMessage: '',
       cityMap: '',
+      weatherData: [],
+      displayWeather: false,
     };
   }
 
@@ -34,19 +37,31 @@ class Main extends React.Component {
         location: response.data[0],
         cityMap: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${response.data[0].lat},${response.data[0].lon}&zoom=12`,
         displayCard: true,
+        searchQuery: '',
       });
-      this.setState({ searchQuery: '', });
-      
-      //if there is an error code runs in the catch block
+
     } catch (error) {
-      // console.log(error)
       this.setState({ 
         error: true,
         displayCard: false,
       });
       this.setState({ errorMessage: error.message });
     }
-    e.target.reset();
+  }
+
+  handleWeather = async (e) => {
+    try {
+      e.preventDefault();
+      const API = `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lat=${this.state.location.lat}&lon=${this.state.location.lon}`;
+      const response = await axios.get(API);
+      this.setState({ 
+        weatherData: response.data,
+        displayWeather: true, 
+      });
+      console.log(this.state.weatherData);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
@@ -58,6 +73,8 @@ class Main extends React.Component {
           location={this.state.location}
           errorMessage={this.state.errorMessage}
           error={this.state.error}
+          searchQuery={this.state.searchQuery}
+
         />
         <CityCard 
           location={this.state.location}
@@ -65,6 +82,11 @@ class Main extends React.Component {
           errorMessage={this.state.errorMessage}
           error={this.state.error}
           displayCard={this.state.displayCard}
+        />
+        <Weather
+          handleWeather={this.handleWeather}
+          weatherData={this.state.weatherData}
+          displayWeather={this.state.displayWeather}
         />
       </>
     );
