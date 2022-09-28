@@ -39,6 +39,8 @@ class Main extends React.Component {
         displayCard: true,
         searchQuery: '',
       });
+      this.handleWeather();
+     
 
     } catch (error) {
       this.setState({ 
@@ -49,20 +51,24 @@ class Main extends React.Component {
     }
   }
 
-  handleWeather = async (e) => {
+  handleWeather = async () => {
     try {
-      e.preventDefault();
       const API = `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lat=${this.state.location.lat}&lon=${this.state.location.lon}`;
-      const response = await axios.get(API);
+      const weatherRes = await axios.get(API);
       this.setState({ 
-        weatherData: response.data,
+        weatherData: weatherRes.data,
         displayWeather: true, 
       });
-      console.log(this.state.weatherData);
+  
     } catch (error) {
       console.log(error);
     }
   }
+
+  // handleData = async () => {
+  //   await this.handleWeather();
+  // }
+
 
   render() {
     return (
@@ -84,7 +90,6 @@ class Main extends React.Component {
           displayCard={this.state.displayCard}
         />
         <Weather
-          handleWeather={this.handleWeather}
           weatherData={this.state.weatherData}
           displayWeather={this.state.displayWeather}
         />

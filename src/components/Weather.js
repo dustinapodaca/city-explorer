@@ -8,9 +8,17 @@ class Weather extends React.Component {
       <>
         {this.props.displayWeather &&
         <Container>
-          <h5>Weather for {this.props.location.display_name}</h5>
-          <p>Forecast: {this.props.weatherData.weather.description}</p>
-          <p>Temperature: {this.props.weatherData.temp}</p>
+          <h3>Weather</h3>
+          <div>
+            {this.props.weatherData.map((e, i) => {
+              return (
+                <>
+                  <p key={i}>Date: {e.date}</p>
+                  <p>Forecast: {e.description}</p>
+                </>
+              )
+            })}
+          </div>
         </Container>
         }
       </>
@@ -49,3 +57,12 @@ export default Weather;
 //       this.setState({ errorMessage: error.message });
 //     }
 //   }
+
+// {
+//   this.props.weatherData.map((e, i) => {
+//     key = { i }
+//     date = { e.date }
+//     descripion = { e.description }
+//     return (
+//               <p>Date: {date}</p>
+//               <p>Forecast: {description}</p>
