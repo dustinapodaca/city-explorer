@@ -11,9 +11,9 @@
 
 ## Architecture
 
-![Web Response Cycle 1](./assets/images/WRRC.png)
-![Web Response Cycle 2](./assets/images/WRRC2.png)
-![Web Response Cycle 3](./assets/images/WRRC3.png)
+![Web Response Cycle 1](./src/assets/images/WRRC.png)
+![Web Response Cycle 2](./src/assets/images/WRRC2.png)
+![Web Response Cycle 3](./src/assets/images/WRRC3.png)
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log
