@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './components/Header';
 import Main from './Main';
 import Footer from './components/Footer';
-import Mainphotos from './Mainphotos';
 import './App.css';
 // import { Form, Container, Button } from 'react-bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +16,6 @@ class App extends React.Component {
         <div id="mainDiv">
           <Main />
         </div>
-        <Mainphotos />
         <Footer />
       </>
     );
