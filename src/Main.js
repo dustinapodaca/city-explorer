@@ -17,6 +17,8 @@ class Main extends React.Component {
       cityMap: '',
       weatherData: [],
       displayWeather: false,
+      lat: '',
+      lon: '',
     };
   }
 
@@ -38,6 +40,8 @@ class Main extends React.Component {
         cityMap: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${response.data[0].lat},${response.data[0].lon}&zoom=12`,
         displayCard: true,
         searchQuery: '',
+        lat: response.data[0].lat,
+        lon: response.data[0].lon,
       });
       this.handleWeather();
      
@@ -53,8 +57,19 @@ class Main extends React.Component {
 
   handleWeather = async () => {
     try {
-      const API = `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lat=${this.state.location.lat}&lon=${this.state.location.lon}`;
-      const weatherRes = await axios.get(API);
+      // const API = `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lat=${this.state.location.lat}&lon=${this.state.location.lon}`;
+
+      const API = process.env.REACT_APP_API_URL;
+      //has to match backend server
+      const url = `${API}/weather`;
+      const weatherRes = await axios.get(url, {
+        params: { 
+          searchQuery: this.state.searchQuery,
+          lat: this.state.lat,
+          lon: this.state.lon,
+        },
+      });
+      // const weatherRes = await axios.get(API);
       this.setState({ 
         weatherData: weatherRes.data,
         displayWeather: true, 
@@ -64,11 +79,6 @@ class Main extends React.Component {
       console.log(error);
     }
   }
-
-  // handleData = async () => {
-  //   await this.handleWeather();
-  // }
-
 
   render() {
     return (
