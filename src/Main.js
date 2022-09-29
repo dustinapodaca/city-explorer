@@ -25,11 +25,9 @@ class Main extends React.Component {
 
   handleInput = (e) => {
     this.setState({ searchQuery: e.target.value });
-    // console.log(this.state.searchQuery);
   }
 
   handleSearch = async (e) => {
-    //code runs in the try block
     e.preventDefault();
     this.setState({ error: false });
     try {
