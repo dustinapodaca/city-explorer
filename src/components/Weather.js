@@ -13,8 +13,10 @@ class Weather extends React.Component {
             {this.props.weatherData.map((e, i) => {
               return (
                 <>
-                  <p key={i}>Date: {e.date}</p>
-                  <p>Forecast: {e.description}</p>
+                  <div key={`weather-${i}`}>
+                    <p>Date: {e.date}</p>
+                    <p>Forecast: {e.description}</p>
+                  </div>
                 </>
               )
             })}
@@ -59,10 +61,10 @@ export default Weather;
 //   }
 
 // {
-//   this.props.weatherData.map((e, i) => {
-//     key = { i }
-//     date = { e.date }
-//     descripion = { e.description }
-//     return (
-//               <p>Date: {date}</p>
-//               <p>Forecast: {description}</p>
+  // this.props.weatherData.map((e, i) => {
+  //   key = { i }
+  //   date = { e.date }
+  //   descripion = { e.description }
+  //   return (
+  //             <p>Date: {date}</p>
+  //             <p>Forecast: {description}</p>

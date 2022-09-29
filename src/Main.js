@@ -3,6 +3,7 @@ import axios from 'axios';
 import CityForm from './components/CityForm';
 import CityCard from './components/CityCard';
 import Weather from './components/Weather';
+import Movies from './components/Movies';
 import './App.css';
 
 class Main extends React.Component {
@@ -17,8 +18,8 @@ class Main extends React.Component {
       cityMap: '',
       weatherData: [],
       displayWeather: false,
-      lat: '',
-      lon: '',
+      movieData: [],
+      displayMovies: false,
     };
   }
 
@@ -40,11 +41,9 @@ class Main extends React.Component {
         cityMap: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${response.data[0].lat},${response.data[0].lon}&zoom=12`,
         displayCard: true,
         searchQuery: '',
-        lat: response.data[0].lat,
-        lon: response.data[0].lon,
       });
       this.handleWeather();
-     
+      this.handleMovies();
 
     } catch (error) {
       this.setState({ 
@@ -57,26 +56,52 @@ class Main extends React.Component {
 
   handleWeather = async () => {
     try {
-      // const API = `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lat=${this.state.location.lat}&lon=${this.state.location.lon}`;
-
       const API = process.env.REACT_APP_API_URL;
       //has to match backend server
       const url = `${API}/weather`;
       const weatherRes = await axios.get(url, {
         params: { 
           searchQuery: this.state.searchQuery,
-          lat: this.state.lat,
-          lon: this.state.lon,
         },
       });
-      // const weatherRes = await axios.get(API);
       this.setState({ 
         weatherData: weatherRes.data,
         displayWeather: true, 
       });
+      console.log(this.state.weatherData);
   
     } catch (error) {
       console.log(error);
+      this.setState({
+        error: true,
+        displayWeather: false,
+      });
+      this.setState({ errorMessage: error.message });
+    }
+  }
+
+  handleMovies = async () => {
+    try {
+      const API = process.env.REACT_APP_API_URL;
+      //has to match backend server
+      const url = `${API}/movie`;
+      const movieRes = await axios.get(url, {
+        params: {
+          query: this.state.searchQuery,
+        },
+      });
+      this.setState({
+        movieData: movieRes.data,
+        displayMovies: true,
+      });
+
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        error: true,
+        displayMovies: false,
+      });
+      this.setState({ errorMessage: error.message });
     }
   }
 
@@ -103,6 +128,11 @@ class Main extends React.Component {
           weatherData={this.state.weatherData}
           displayWeather={this.state.displayWeather}
         />
+        <Movies
+          movieData={this.state.movieData}
+          displayMovies={this.state.displayMovies}
+        />
+        
       </>
     );
   }
