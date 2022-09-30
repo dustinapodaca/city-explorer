@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
+// import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieCard from './MovieCard';
 
@@ -33,3 +34,29 @@ class Movies extends React.Component {
 }
 
 export default Movies;
+
+
+
+//CAROUSEL
+//=========================
+// class Movies extends React.Component {
+//   render() {
+//     return (
+//       <Carousel>
+//         {this.props.displayMovies &&
+//         this.props.movieData.map((e, i) => {
+//           return (
+//             <MovieCard
+//               key={i}
+//               movieData={e}
+//               displayMovies={this.props.displayMovies}
+//             />
+//           )
+//         })}
+//       </Carousel>
+//     );
+//   }
+// }
+
+// export default Movies;
+
