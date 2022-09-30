@@ -125,10 +125,12 @@ class Main extends React.Component {
         <Weather
           weatherData={this.state.weatherData}
           displayWeather={this.state.displayWeather}
+          location={this.state.location}
         />
         <Movies
           movieData={this.state.movieData}
           displayMovies={this.state.displayMovies}
+          location={this.state.location}
         />
         
       </>

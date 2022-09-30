@@ -1,35 +1,34 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Card, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Card from 'react-bootstrap/Card';
+import MovieCard from './MovieCard';
 
 class Movies extends React.Component {
   render() {
     return (
       <>
         {this.props.displayMovies &&
-          <Container>
-            <h3>Movies</h3>
-            <div>
+        <Container>
+          <Card className="mb-4 bg-light mx-auto pb-1">
+            <Card.Title id="weatherTitle" className="mb-3 rounded-top text-light p-3 mx-auto w-100">Movies Related to the City of{this.props.location.display_name}</Card.Title>
+            <Row xs={3} sm={3} md={3} lg={3} xl={3} className="g-1 px-3">
               {this.props.movieData.map((e, i) => {
                 return (
-                  <>
-                    <div key={`movies-${i}`}>
-                      <p>Title: {e.title}</p>
-                      <p>Overview: {e.overview}</p>
-                      <p>Average Votes: {e.vote_average}</p>
-                      <p>Total Votes: {e.vote_count}</p>
-                      <p>Popularity: {e.popularity}</p>
-                      <p>Released On: {e.release_date}</p>
-                    </div>
-                  </>
+                  <Col className='mb-3'>
+                    <MovieCard
+                      key={i}
+                      movieData={e}
+                      displayMovies={this.props.displayMovies}
+                    />
+                  </Col>
                 )
               })}
-            </div>
-          </Container>
+            </Row>
+          </Card>
+        </Container>
         }
       </>
-    )
+    );
   }
 }
 

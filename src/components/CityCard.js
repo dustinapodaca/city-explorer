@@ -21,14 +21,14 @@ class CityCard extends React.Component {
         }
         {this.props.displayCard &&
         <Container>
-          <Card className="mb-5">
+          <Card className="mb-4">
             <Card.Body>
               <Card.Title>{this.props.location.display_name}</Card.Title>
               <Card.Text>
                 Latitude: {this.props.location.lat} <br />
                 Longitude: {this.props.location.lon}
               </Card.Text>
-            <Card.Img variant="top" src={this.props.cityMap} />
+                <Card.Img variant="top" className="p-4 bg-light border border-dark " src={this.props.cityMap} />
             </Card.Body>
           </Card>
         </Container>
