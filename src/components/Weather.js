@@ -2,11 +2,12 @@ import React from 'react';
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WeatherDay from './WeatherDay';
+
 class Weather extends React.Component {
   render() {
     return (
       <>
-        {this.props.displayWeather &&
+        {this.props.displayCard &&
         <Container>
           <Card className="mb-4 bg-light mx-auto pb-1">
             <Card.Title id="weatherTitle" className="mb-3 rounded-top text-light p-3 mx-auto w-100">Daily Weather Forecast for {this.props.location.display_name.split(' ').shift().replace(/,/g, '')}</Card.Title>
@@ -17,7 +18,6 @@ class Weather extends React.Component {
                     <WeatherDay
                       key={i}
                       weatherData={e}
-                      displayWeather={this.props.displayWeather}
                     />
                   </Col>
                 )

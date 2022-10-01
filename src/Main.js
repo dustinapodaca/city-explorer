@@ -12,14 +12,12 @@ class Main extends React.Component {
     this.state = {
       searchQuery: '',
       location: {},
-      error: false,
       displayCard: false,
+      error: false,
       errorMessage: '',
       cityMap: '',
       weatherData: [],
-      displayWeather: false,
       movieData: [],
-      displayMovies: false,
     };
   }
 
@@ -64,7 +62,6 @@ class Main extends React.Component {
       });
       this.setState({ 
         weatherData: weatherRes.data,
-        displayWeather: true, 
       });
       console.log(this.state.weatherData);
   
@@ -72,7 +69,6 @@ class Main extends React.Component {
       console.log(error);
       this.setState({
         error: true,
-        displayWeather: false,
       });
       this.setState({ errorMessage: error.message });
     }
@@ -90,14 +86,12 @@ class Main extends React.Component {
       });
       this.setState({
         movieData: movieRes.data,
-        displayMovies: true,
       });
 
     } catch (error) {
       console.log(error);
       this.setState({
         error: true,
-        displayMovies: false,
       });
       this.setState({ errorMessage: error.message });
     }
@@ -124,14 +118,14 @@ class Main extends React.Component {
         />
         <Weather
           weatherData={this.state.weatherData}
-          displayWeather={this.state.displayWeather}
           location={this.state.location}
+          displayCard={this.state.displayCard}
         />
-        {this.state.displayMovies &&
+        {this.state.displayCard &&
         <Movies
           movieData={this.state.movieData}
-          displayMovies={this.state.displayMovies}
           location={this.state.location}
+          displayCard={this.state.displayCard}
         />
         }
       </>

@@ -5,13 +5,14 @@ import Card from 'react-bootstrap/Card';
 import Alert from 'react-bootstrap/Alert'
 
 class CityCard extends React.Component {
+
   render() {
     return (
       <>
         {this.props.error &&
         <Container>
           <Alert variant="danger" className="my-3">
-            <Alert.Heading>
+            <Alert.Heading className='text-center'>
               <>
                 <h5>Oh no! {this.props.errorMessage}. Please try another city.</h5>
               </>
