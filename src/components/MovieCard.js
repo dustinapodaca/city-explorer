@@ -42,33 +42,3 @@ class MovieCard extends React.Component {
 }
 
 export default MovieCard;
-
-// class MovieCard extends React.Component {
-
-//   addDefaultSrc(e) {
-//     e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWcWg0E8pSjBNi0TtiZsqu8uD2PAr_K11DA&usqp=CAU';
-//   }
-
-//   render() {
-//     return (
-//       <>
-//         <Container>
-//           <>
-//             <div>
-//               <p>Title: {this.props.movieData.title}</p>
-//               <p>Overview: {this.props.movieData.overview}</p>
-//               <p>Average Votes: {this.props.movieData.vote_average}</p>
-//               <p>Total Votes: {this.props.movieData.vote_count}</p>
-//               <p>Popularity: {this.props.movieData.popularity}</p>
-//               <p>Released On: {this.props.movieData.release_date}</p>
-//               <Card.Img variant="top" className="p-4 bg-light border border-dark " src={this.props.movieData.poster_path} alt={this.props.movieData.title} onError={this.addDefaultSrc} />
-//             </div>
-//           </>
-//         </Container>
-//       </>
-//     )
-//   }
-// }
-
-// export default MovieCard;
-
