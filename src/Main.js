@@ -127,12 +127,13 @@ class Main extends React.Component {
           displayWeather={this.state.displayWeather}
           location={this.state.location}
         />
+        {this.state.displayMovies &&
         <Movies
           movieData={this.state.movieData}
           displayMovies={this.state.displayMovies}
           location={this.state.location}
         />
-        
+        }
       </>
     );
   }
