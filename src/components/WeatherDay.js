@@ -13,9 +13,9 @@ class WeatherDay extends React.Component {
               The weather forecast in {this.props.weatherData.city_name} calls for {this.props.weatherData.description.toLowerCase()}.
               <br />
               <br />
-              <b>High:</b> {this.props.weatherData.high_temp}&#176;
+              <b>High:</b> {this.props.weatherData.high_temp} &#176;F
               <br />
-              <b>Low:</b> {this.props.weatherData.low_temp}&#176;
+              <b>Low:</b> {this.props.weatherData.low_temp} &#176;F
             </Card.Text>
           </Card>
         </Container>
