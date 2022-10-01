@@ -46,6 +46,39 @@ body {
   background-color: rgb(74, 57, 75);
 }
 
+#carouselImg {
+  width: 50%;
+  /* padding-bottom: 30px; */
+  margin: 0 auto;
+}
+
+#carousel {
+  margin-bottom: 70px;
+  border-radius: 50%;
+}
+
+#carouselImg img {
+  margin: 0 auto;
+  width: 100%;
+  max-height: 550px;
+  object-fit: cover;
+  outline: 100px solid rgb(174, 162, 184);
+}
+
+#carouselText {
+  bottom: 0;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+  text-shadow: 0.5px 0.5px 0.5px rgb(0, 0, 0);
+  background-color: rgb(74, 57, 75);
+  max-width: 100%;
+  width: 100%;
+  left: 0;
+  padding: 15px 50px 25px 50px;
+
+}
+
 #footerDiv {
   display: flex;
   flex-direction: row;
